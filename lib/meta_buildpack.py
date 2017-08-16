@@ -77,14 +77,14 @@ def detect_decorators(build_dir):
 """ compile """
 
 def compile(build_dir, cache_dir, env_dir):
-	buildpack_name = get_state('buildpack_name')
-	buildpack_path = get_state('buildpack_path')
-	compile_buildpack(buildpack_name, buildpack_path, build_dir, cache_dir, env_dir)
 	decorators = get_state('decorators')
 	for decorator in decorators:
 		decorator_name = decorator['decorator_name']
 		decorator_path = decorator['decorator_path']
 		compile_buildpack(decorator_name, decorator_path, build_dir, cache_dir, env_dir)
+	buildpack_name = get_state('buildpack_name')
+	buildpack_path = get_state('buildpack_path')
+	compile_buildpack(buildpack_name, buildpack_path, build_dir, cache_dir, env_dir)
 
 def compile_buildpack(name, path, build_dir, cache_dir, env_dir):
 	print "[meta-buildpack] Compiling with", name
