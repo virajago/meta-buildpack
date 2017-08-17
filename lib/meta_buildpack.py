@@ -93,7 +93,7 @@ def compile_buildpack(name, path, build_dir, cache_dir, env_dir):
 		bin_compile = os.path.join(buildpack_dir, path, "bin", "compile")
 		sys.stdout.flush()
 		env_var = build_dir + "/go_oracle/oracle_client"
-		subprocess.check_call( [ bin_compile, build_dir, cache_dir, env_dir ], env={"PKG_CONFIG_PATH":env_var} )
+		subprocess.check_call( [ bin_compile, build_dir, cache_dir, env_dir ] )
 	except OSError: # Buildpack is mal-formed
 		print >> sys.stderr, "[meta-buildpack]", bin_compile, "not found"
 		sys.exit(2)
